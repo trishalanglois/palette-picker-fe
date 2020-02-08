@@ -3,15 +3,18 @@ import './App.scss';
 import Sidebar from '../Sidebar/Sidebar';
 import FormContainer from '../FormContainer/FormContainer';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
+const App  = () => {
+  return (
+    <div className="App">
+      <nav className="sidebar">
         <Sidebar />
+      </nav>
+      <h1 className="app-title">palette picker</h1>
+      <main className="main-container">
         <FormContainer />
-      </div>
-    )
-  }
+      </main>
+    </div>
+  )
 }
 
 
