@@ -3,15 +3,13 @@ import './App.scss';
 import Sidebar from '../Sidebar/Sidebar';
 import FormContainer from '../FormContainer/FormContainer';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Sidebar />
-        <FormContainer />
-      </div>
-    )
-  }
+const App  = () => {
+  return (
+    <div className="App">
+      <Sidebar />
+      <FormContainer />
+    </div>
+  )
 }
 
 
