@@ -1,0 +1,9 @@
+@import '../../scss/variables';
+
+.main-box {
+  border-radius: 30px;
+  background-color: $background-neutral-color;
+  width: 60%;
+  margin: 0 auto;
+  padding: 2em;
+}
