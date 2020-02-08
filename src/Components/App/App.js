@@ -6,8 +6,13 @@ import FormContainer from '../FormContainer/FormContainer';
 const App  = () => {
   return (
     <div className="App">
-      <Sidebar />
-      <FormContainer />
+      <nav className="sidebar">
+        <Sidebar />
+      </nav>
+      <h1 className="app-title">palette picker</h1>
+      <main className="main-container">
+        <FormContainer />
+      </main>
     </div>
   )
 }

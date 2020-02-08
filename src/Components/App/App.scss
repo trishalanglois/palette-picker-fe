@@ -1,5 +1,36 @@
+@import '../../scss/variables';
+
 .App {
   background-image: url('../../images/background.jpg');
   background-size: cover;
   height: 100vh;
+  display: grid;
+  grid-template: 
+    "sidebar title"
+    "sidebar main";
+
 }
+
+.sidebar {
+  grid-area: sidebar;
+  height: 100vh;
+  width: 10vw;
+}
+
+.app-title {
+  font-family: $accent-font;
+  color: $light-font-color;
+  grid-area: title;
+  width: 90vw;
+  height: 15vh;
+  font-size: 5em;
+  text-align: center;
+}
+
+.main-container {
+  grid-area: main;
+  width: 90vw;
+  height: 85vh;
+}
+
+
