@@ -22,7 +22,7 @@ export const PaletteForm = () => {
 
       <div className="add-palette-form-top">
         <div className="name-palette-wrapper">
-          <label className="name-palette-label">NAME PALETTE</label>
+          <label className="name-palette-label">PALETTE NAME</label>
           <input className="name-palette-input" type="text"></input>
         </div>
         <div className="palettes-wrapper">

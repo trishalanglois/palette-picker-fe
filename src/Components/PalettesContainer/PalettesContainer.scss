@@ -1,0 +1,13 @@
+@import '../../scss/variables';
+
+.palettes-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.palettes-title {
+  font-family: $main-font;
+  font-size: 2em;
+  margin: 0px auto;
+  font-weight: lighter;
+}
