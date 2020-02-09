@@ -29,6 +29,16 @@ export const retrieveSpecificProject = async (projectId) => {
   return project;
 } 
 
+export const retrieveSpecificPalette = async (paletteId) => {
+  const url = `https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/:projectId/palettes/${paletteId}`;
+  const response = await fetch(url);
+  const palette = response.json();
+  if (!response.ok) {
+    throw Error('Error fetching project');
+  }
+  return palette;
+} 
+
 export const postProject = async projectTitle => {
   const options = {
     method: 'POST',
