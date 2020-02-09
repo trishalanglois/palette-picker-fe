@@ -3,15 +3,13 @@ import {useEffect} from 'react';
 import './Sidebar.scss';
 import SidebarProject from '../SidebarProject/SidebarProject';
 import { retrieveProjects } from '../../util/apiCalls';
-import { connect } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
-import { addProjects } from '../../actions';
 
 
 export const Sidebar = () => {
   const dispatch = useDispatch()
   const projects = useSelector(state => state.projects)
-  
+
   useEffect(() => {
     retrieveProjects()
         .then(data => {
