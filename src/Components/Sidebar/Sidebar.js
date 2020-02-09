@@ -19,13 +19,12 @@ export class Sidebar extends React.Component {
   render(){
     return (
       <>
+      <div>
+          <h1 className= "projects-title">Projects</h1>
+      </div>   
         {this.props.projects.map(project => {
           return (
-            <>
-            <div>
-              <h1 className= "projects-title">Projects</h1>
-            </div>
-            
+          <>         
           <SidebarProject
             title={project.title}
               />
