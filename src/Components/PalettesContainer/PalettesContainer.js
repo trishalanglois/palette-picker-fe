@@ -1,5 +1,5 @@
 import React from 'react';
-import './FormContainer.scss';
+import './PalettesContainer.scss';
 import Palette from '../Palette/Palette';
 
 export const PalettesContainer = () => {
