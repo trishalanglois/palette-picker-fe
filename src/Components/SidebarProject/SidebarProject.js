@@ -4,7 +4,7 @@ import './SidebarProject.scss';
 export const SidebarProject = ({ title }) => {
   return (
     <> 
-      <h2>Projects: {title}</h2>
+      <h2>{title}</h2>
     </>
   )
 }

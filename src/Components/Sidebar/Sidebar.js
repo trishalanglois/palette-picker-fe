@@ -20,10 +20,16 @@ export class Sidebar extends React.Component {
     return (
       <>
         {this.props.projects.map(project => {
-        return (
+          return (
+            <>
+            <div>
+              <h1 className= "projects-title">Projects</h1>
+            </div>
+            
           <SidebarProject
             title={project.title}
-          />
+              />
+          </>
         )
       })}
       </>
