@@ -6,10 +6,10 @@ import PaletteForm from '../PaletteForm/PaletteForm';
 
 export const FormContainer = () => {
   return (
-    <> 
-      <ProjectForm />
-      <PaletteForm />
-    </>
+      <article className="main-box"> 
+        <ProjectForm />
+        <PaletteForm />
+      </article>
   )
 }
 

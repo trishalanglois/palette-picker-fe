@@ -1,0 +1,25 @@
+@import '../../scss/variables';
+
+.palette-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.delete-button {
+  font-size: 2em;
+  background-color: $background-neutral-color;
+  border: none;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.06);
+      font-weight: bold;
+    }
+}
+
+.palette-name-label {
+  font-family: $accent-font;
+  font-size: 2em;
+  padding-left: 0px;
+  font-weight: lighter;
+}
