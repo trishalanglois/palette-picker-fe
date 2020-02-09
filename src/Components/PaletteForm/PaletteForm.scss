@@ -1,0 +1,43 @@
+@import '../../scss/variables';
+
+.name-palette-label {
+  font-family: $main-font;
+  font-size: 1.5em;
+  margin: 1em;
+}
+
+.name-palette-wrapper {
+  text-align: left;
+}
+
+.name-palette-input {
+  font-size: 1.25em;
+  font-family: $main-font;
+}
+
+.add-palette-form-top {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.palettes-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-palette-button {
+  display: block;
+  background-color: $accent-color;
+  font-family: $accent-font;
+  color: $light-font-color;
+  font-size: 3em;
+  border-radius: 20px;
+  padding: .25em;
+    &:hover {
+      background-color: $hover-accent-color;
+      cursor: pointer;
+      transform: scale(1.03);
+    }
+  margin: 1em auto;
+}
