@@ -12,6 +12,8 @@
   border: none;
     &:hover {
       cursor: pointer;
+      transform: scale(1.06);
+      font-weight: bold;
     }
 }
 

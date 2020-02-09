@@ -9,14 +9,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers/reducers';
 
 
-// const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(rootReducer, composeWithDevTools());
 
-// ReactDOM.render(
-//   <Provider store={store} >
-//     <App />
-//   </Provider>, 
-//   document.getElementById('root')
-// );
+ReactDOM.render(
+  <Provider store={store} >
+    <App />
+  </Provider>, 
+  document.getElementById('root')
+);
 
-
-ReactDOM.render(<App />, document.getElementById('root'));
+serviceWorker.unregister();
