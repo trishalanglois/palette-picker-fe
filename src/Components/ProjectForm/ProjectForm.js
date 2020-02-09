@@ -12,7 +12,7 @@ export const ProjectForm = (props) => {
     event.preventDefault();
     try {
       const response = await postProject(title)
-      dispatch(addProject(response.id, title))
+      dispatch(addProject(response.id[0], title))
     } catch (error) {
       console.log(error)
     }
