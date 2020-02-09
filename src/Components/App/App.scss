@@ -14,7 +14,9 @@
 .sidebar {
   grid-area: sidebar;
   height: 100vh;
-  width: 10vw;
+  width: 15vw;
+  background-color: $background-neutral-color;
+  text-align: center;
 }
 
 .app-title {

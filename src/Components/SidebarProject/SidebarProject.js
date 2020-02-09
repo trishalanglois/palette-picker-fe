@@ -1,10 +1,10 @@
 import React from 'react';
 import './SidebarProject.scss';
 
-export const SidebarProject = () => {
+export const SidebarProject = ({ title }) => {
   return (
     <> 
-      this is a project!
+      <h2>{title}</h2>
     </>
   )
 }
