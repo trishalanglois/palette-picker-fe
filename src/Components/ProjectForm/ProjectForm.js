@@ -18,16 +18,17 @@ export const ProjectForm = (props) => {
 
         <button className="generate-palette-button" type="button">generate palette</button>
       </form>
-
     </div>
   )
 }
 
-export const mapStateToProps = state => ({
+// export const mapStateToProps = state => ({
 
-})
+// })
 
 export default ProjectForm;
 
 // regular props, passed down from clickevent from sidebar - show the project title 
 // mapDispatchToProps - create new project, rerender App so it shows up in the sidebar, also shows up on the main card 
+
+//when click generate palette - generate 5 random colors, pass those down to PaletteForm component 

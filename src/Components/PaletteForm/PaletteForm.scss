@@ -1,0 +1,24 @@
+@import '../../scss/variables';
+
+.name-palette-label {
+  font-family: $main-font;
+  font-size: 1.5em;
+  margin: 1em;
+}
+
+.name-palette-input {
+  font-size: 1.25em;
+  padding: .25em;
+  font-family: $main-font;
+}
+
+.add-palette-form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.palettes-wrapper {
+  display: flex;
+  flex-direction: row;
+}
