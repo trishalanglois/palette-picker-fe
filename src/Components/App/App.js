@@ -3,6 +3,7 @@ import './App.scss';
 import Sidebar from '../Sidebar/Sidebar';
 import FormContainer from '../FormContainer/FormContainer';
 
+
 class App extends Component {
   render() {
     return (
@@ -13,6 +14,5 @@ class App extends Component {
     )
   }
 }
-
 
 export default App;
