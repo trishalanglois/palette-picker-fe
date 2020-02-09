@@ -19,7 +19,7 @@ export const Sidebar = () => {
 
     return (
       <>
-      <div>
+      <div className= "projects">
           <h1 className= "projects-title">Projects</h1>
       </div>   
         {projects.map(project => {
