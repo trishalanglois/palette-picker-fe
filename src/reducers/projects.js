@@ -4,5 +4,5 @@ export const projects = (state = [], action) => {
         return [...state, ...action.projects]
     default:
         return state
-   }
+    }
 }
