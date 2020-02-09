@@ -20,7 +20,6 @@ export class Sidebar extends React.Component {
     return (
       <>
         {this.props.projects.map(project => {
-        console.log(project)
         return (
           <SidebarProject
             title={project.title}

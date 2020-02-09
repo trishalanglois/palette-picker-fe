@@ -3,7 +3,7 @@ export const retrieveProjects = async () => {
       const response = await fetch(url);
       const projects = response.json();
       if (!response.ok) {
-        return response;
+        throw Error('Error fetching projects');
       }
       return projects;
   }
