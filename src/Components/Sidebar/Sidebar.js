@@ -2,27 +2,42 @@ import React from 'react';
 import './Sidebar.scss';
 import SidebarProject from '../SidebarProject/SidebarProject';
 import { retrieveProjects } from '../../util/apiCalls';
-import { useSelector, useDispatch, } from 'react-redux';
-import{useEffect} from 'react'
+// import { useSelector, useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { addProjects } from '../../actions';
 
 
-export const Sidebar = () => {
-  const dispatch = useDispatch()
-  useEffect(() => {
+export class Sidebar extends React.Component {
+  componentDidMount() {
     retrieveProjects()
-    .then(data => {
-      dispatch({type: 'ADD_PROJECTS', projects: data})
-    })
-  });
+      .then(data => {
+        this.props.addProjects(data)
+      })
+  }
 
-  return (
-    <> 
-      <h2>Projects:</h2>
-      <SidebarProject />
-    </>
-  )
+  render(){
+    return (
+      <>
+        {this.props.projects.map(project => {
+        console.log(project)
+        return (
+          <SidebarProject
+            title={project.title}
+          />
+        )
+      })}
+      </>
+    )
+  }
 }
 
+export const mapStateToProps = (state) => ({
+  projects: state.projects
+})
 
+export const mapDispatchToProps = dispatch => ({
+  addProjects: projects => dispatch( addProjects(projects) )
+})
 
-export default Sidebar;
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)
