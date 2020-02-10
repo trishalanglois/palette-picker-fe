@@ -1,4 +1,4 @@
-import { retrieveProjects, retrievePalettes, retrieveSpecificProject, retrieveSpecificPalette, postProject } from './apiCalls';
+import { retrieveProjects, retrievePalettes, retrieveSpecificProject, retrieveSpecificPalette, postProject, postPalette } from './apiCalls';
 
 
 
@@ -293,6 +293,69 @@ describe('postProject', () => {
   
     it('should return a new project with title', () => {
       expect(postProject(mockTitle)).resolves.toEqual(mockResponse);
+    })
+  
+    it('should return an error for response that is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      expect(retrieveSpecificPalette()).rejects.toEqual(Error('Error fetching palettess'))
+    })
+})
+  
+describe('postPalette', () => {
+    let paletteName = 'foster';
+    let color1 = '#666666';
+    let color2 = '#664666';
+    let color3 = '#661666';
+    let color4 = '#666266';
+    let color5 = '#666663';
+    let projectId = 1;
+
+    let mockResponse = {
+        'name': paletteName,
+        'color1': color1,
+        'color2': color2,
+        'color3': color3,
+        'color4': color4,
+        'color5': color5
+      }
+
+
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(projectId)
+        });
+      });
+    });
+  
+    it('should be passed the correct url', () => {
+       const expected = [ `https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes`,{
+        method: 'POST',
+           body: JSON.stringify({
+            'name': paletteName,
+            'color1': color1,
+            'color2': color2,
+            'color3': color3,
+            'color4': color4,
+            'color5': color5
+          }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }];
+        
+      postPalette(paletteName, color1, color2, color3, color4, color5, projectId)
+  
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+    })
+  
+    it('should return a new palette with correct project', () => {
+      expect(postPalette(paletteName, color1, color2, color3, color4, color5, projectId)).resolves.toEqual(mockResponse);
     })
   
     it('should return an error for response that is not ok', () => {
