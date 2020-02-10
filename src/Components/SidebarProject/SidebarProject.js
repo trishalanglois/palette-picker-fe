@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './SidebarProject.scss';
 import ProjectForm from '../ProjectForm/ProjectForm';
-import { addProject } from '../../actions/actions';
+import { clickedProject } from '../../actions/actions';
 
 
 export const SidebarProject = ({ title, id }) => {
-
   const [clickedId, setClickedId] = useState('');
   const [clickedName, setClickedTitle] = useState('');
   const dispatch = useDispatch();
@@ -14,7 +13,7 @@ export const SidebarProject = ({ title, id }) => {
   const handleChange = (id, name) => {
     setClickedId(id);
     setClickedTitle(name);
-    dispatch(addProject(id, name));
+    dispatch(clickedProject(id, name));
   }
 
 
