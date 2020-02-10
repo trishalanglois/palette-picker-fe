@@ -4,7 +4,8 @@ import './ProjectForm.scss';
 import { postProject } from '../../util/apiCalls';
 import { addProject } from '../../actions/actions';
 
-export const ProjectForm = (props) => {
+export const ProjectForm = ({ projectTitle, id }) => {
+  console.log(projectTitle, id)
   const [title, setTitle] = useState("");
   const dispatch = useDispatch();
 
