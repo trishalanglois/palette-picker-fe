@@ -1,4 +1,4 @@
-import { retrieveProjects, retrievePalettes, retrieveSpecificProject } from './apiCalls';
+import { retrieveProjects, retrievePalettes, retrieveSpecificProject, retrieveSpecificPalette } from './apiCalls';
 
 
 
@@ -214,5 +214,48 @@ describe('retrieveSpecificProject', () => {
         });
       });
       expect(retrievePalettes()).rejects.toEqual(Error('Error fetching palettess'))
+    })
+})
+  
+describe('retrieveSpecificPalette', () => {
+    let mockResponse = {
+        id: 20,
+        name: 'trish colors',
+        color1: '#F7C59F',
+        color2: '#2A324B',
+        color3: '#767B91',
+        color4: '#C7CCDB',
+        color5: '#E1E5EE',
+        project_id: 1
+    }
+  
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      });
+    });
+  
+    it('should be passed the correct url', () => {
+        let projectId = 1;
+        let paletteId = 20;
+      retrieveSpecificPalette(paletteId, projectId)
+  
+      expect(window.fetch).toHaveBeenCalledWith(`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes/${paletteId}`);
+    })
+  
+    it('should return an array of projects', () => {
+      expect(retrieveSpecificPalette()).resolves.toEqual(mockResponse);
+    })
+  
+    it('should return an error for response that is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      expect(retrieveSpecificPalette()).rejects.toEqual(Error('Error fetching palettess'))
     })
   })

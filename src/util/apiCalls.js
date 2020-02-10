@@ -29,8 +29,8 @@ export const retrieveSpecificProject = async (projectId) => {
   return project;
 } 
 
-export const retrieveSpecificPalette = async (paletteId) => {
-  const url = `https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/:projectId/palettes/${paletteId}`;
+export const retrieveSpecificPalette = async (paletteId, projectId) => {
+  const url = `https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes/${paletteId}`;
   const response = await fetch(url);
   const palette = response.json();
   if (!response.ok) {
