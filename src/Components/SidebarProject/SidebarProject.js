@@ -3,12 +3,14 @@ import './SidebarProject.scss';
 
 export const SidebarProject = ({ title, id }) => {
 
-  const [clickedProject, setClickedProject] = useState('');
+  const [clickedId, setClickedId] = useState('');
+  const [clickedName, setClickedTitle] = useState('');
 
-  // const handleChange = event => {
-  //   setClickedProject(event.target.id);
-  //   console.log(event.target.id);
-  // }
+  const handleChange = event => {
+    setClickedId(event.target.id);
+    setClickedTitle(event.target.innerText);
+    console.log(clickedId, clickedName);
+  }
 
   //onClick - setClickedProject to the event.target.value 
   //when clickedProject changes, useEffect will fire 
@@ -16,7 +18,7 @@ export const SidebarProject = ({ title, id }) => {
 
   return (
     <> 
-      <button id={id} onClick={(event) => setClickedProject(event.target.id)}>{title}</button>
+      <button className='sidebar-project-name' id={id} onClick={(event) => handleChange(event)}>{title}</button>
     </>
   )
 }
