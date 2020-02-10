@@ -64,16 +64,14 @@ export const postPalette = async (paletteName, colorOne, colorTwo, colorThree,co
       'color2': colorTwo,
       'color3': colorThree,
       'color4': colorFour,
-      'color5': colorFive,
-      'project_id': projectId
-
+      'color5': colorFive
     }),
     headers: {
       'Content-Type': 'application/json'
     }
   };
 
-  const response = await fetch('https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/:id/palettes', options);
+  const response = await fetch(`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes`, options);
   if (!response.ok) {
     throw Error('Error posting project');
   }
@@ -96,7 +94,6 @@ export const deletePalette = async paletteId => {
 export const deleteProject = async projectId => {
   const options = {
     method: 'DELETE',
-
   };
 
   const response = await fetch(`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}`, options);
@@ -106,7 +103,7 @@ export const deleteProject = async projectId => {
   return response.json();
 } 
 
-export const patchProject = async (projectId, title) => {
+export const updateProjectTitle = async (projectId, title) => {
   const options = {
     method: 'PATCH',
     body: JSON.stringify({
@@ -122,4 +119,22 @@ export const patchProject = async (projectId, title) => {
   }
   return response.json();
 } 
+
+export const updatePaletteTitle = async (projectId, paletteId, newPaletteName) => {
+  const options = {
+    method: 'PATCH',
+    body: JSON.stringify({
+      'name': newPaletteName,
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+  const response = await fetch(`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes/${paletteId}`, options);
+  if (!response.ok) {
+    throw Error('Error updating palette');
+  }
+  return response.json();
+} 
+
 
