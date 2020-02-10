@@ -106,3 +106,20 @@ export const deleteProject = async projectId => {
   return response.json();
 } 
 
+export const patchProject = async (projectId, title) => {
+  const options = {
+    method: 'PATCH',
+    body: JSON.stringify({
+      'title': title,
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+  const response = await fetch(`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}`, options);
+  if (!response.ok) {
+    throw Error('Error updating project');
+  }
+  return response.json();
+} 
+
