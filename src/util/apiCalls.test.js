@@ -1,4 +1,4 @@
-import { retrieveProjects, retrievePalettes, retrieveSpecificProject, retrieveSpecificPalette, postProject, postPalette, deleteProject, deletePalette } from './apiCalls';
+import { retrieveProjects, retrievePalettes, retrieveSpecificProject, retrieveSpecificPalette, postProject, postPalette, deleteProject, deletePalette, updateProjectTitle } from './apiCalls';
 
 
 
@@ -459,5 +459,53 @@ describe('deletePalette', () => {
         });
       });
       expect(retrieveSpecificPalette()).rejects.toEqual(Error('Error fetching palettess'))
+    })
+})
+  
+describe('updateProjectTitle', () => {
+    let projectId = 1;
+
+    let mockProject = {
+        id:1,
+        title: 'foster'
+      }
+    let mockTitle ='foster'
+    let mockResponse ='Project 1 has been updated'
+
+
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      });
+    });
+  
+    it('should be passed the correct url', () => {
+        const expected = [`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}`, {
+            method: 'PATCH',
+           body: JSON.stringify({title:mockTitle}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }];
+        
+      updateProjectTitle(projectId, mockTitle)
+  
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+    })
+  
+    it('should add title', () => {
+      expect(updateProjectTitle(projectId, mockTitle)).resolves.toEqual(mockResponse);
+    })
+  
+    it('should return an error for response that is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      expect(updateProjectTitle(projectId, mockTitle)).rejects.toEqual(Error('Error updating title'))
     })
   })
