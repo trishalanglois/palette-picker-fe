@@ -1,4 +1,4 @@
-import { retrieveProjects, retrievePalettes, retrieveSpecificProject, retrieveSpecificPalette } from './apiCalls';
+import { retrieveProjects, retrievePalettes, retrieveSpecificProject, retrieveSpecificPalette, postProject } from './apiCalls';
 
 
 
@@ -246,8 +246,53 @@ describe('retrieveSpecificPalette', () => {
       expect(window.fetch).toHaveBeenCalledWith(`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes/${paletteId}`);
     })
   
-    it('should return an array of projects', () => {
+    it('should return a palette object', () => {
       expect(retrieveSpecificPalette()).resolves.toEqual(mockResponse);
+    })
+  
+    it('should return an error for response that is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      expect(retrieveSpecificPalette()).rejects.toEqual(Error('Error fetching palettess'))
+    })
+})
+  
+describe('postProject', () => {
+    let mockTitle = 'foster' 
+    let mockResponse = {
+        id:3,
+        title: 'foster'
+      }
+    
+  
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(id)
+        });
+      });
+    });
+  
+    it('should be passed the correct url', () => {
+       const expected = [ 'https://mysterious-dusk-17585.herokuapp.com/api/v1/projects',{
+        method: 'POST',
+           body: JSON.stringify({title:mockTitle}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }];
+        
+      postProject(mockTitle)
+  
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+    })
+  
+    it('should return a new project with title', () => {
+      expect(postProject(mockTitle)).resolves.toEqual(mockResponse);
     })
   
     it('should return an error for response that is not ok', () => {
