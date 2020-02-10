@@ -1,4 +1,4 @@
-import { retrieveProjects, retrievePalettes, retrieveSpecificProject, retrieveSpecificPalette, postProject, postPalette, deleteProject } from './apiCalls';
+import { retrieveProjects, retrievePalettes, retrieveSpecificProject, retrieveSpecificPalette, postProject, postPalette, deleteProject, deletePalette } from './apiCalls';
 
 
 
@@ -399,6 +399,57 @@ describe('deleteProject', () => {
   
     it('should remove project', () => {
       expect(deleteProject(projectId)).resolves.toEqual(mockResponse);
+    })
+  
+    it('should return an error for response that is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      expect(retrieveSpecificPalette()).rejects.toEqual(Error('Error fetching palettess'))
+    })
+})
+  
+describe('deletePalette', () => {
+    let paletteId = 1;
+    let projectId = 2;
+
+    let mockPalette = {
+        id:1,
+        name: 'foster',
+        color1: 'red',
+        color2: 'blue',
+        color3: 'purple',
+        color4: 'orange',
+        color5: 'yellow',
+        project_id:2
+      }
+    let mockTitle ='foster'
+    let mockResponse ='Palette 1 has been successfully deleted'
+
+
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      });
+    });
+  
+    it('should be passed the correct url', () => {
+        const expected = [`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes/${paletteId}`, {
+            method: 'DELETE',
+        }]
+        
+      deletePalette(paletteId, projectId)
+  
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+    })
+  
+    it('should remove palette', () => {
+      expect(deletePalette(paletteId, projectId)).resolves.toEqual(mockResponse);
     })
   
     it('should return an error for response that is not ok', () => {
