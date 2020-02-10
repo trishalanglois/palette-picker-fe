@@ -92,3 +92,17 @@ export const deletePalette = async paletteId => {
   }
   return response.json();
 } 
+
+export const deleteProject = async projectId => {
+  const options = {
+    method: 'DELETE',
+
+  };
+
+  const response = await fetch(`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}`, options);
+  if (!response.ok) {
+    throw Error('Error deleting project');
+  }
+  return response.json();
+} 
+
