@@ -54,3 +54,28 @@ export const postProject = async projectTitle => {
   }
   return response.json();
 }
+
+export const postPalette = async (paletteName, colorOne, colorTwo, colorThree,colorFour,colorFive,projectId) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify({
+      'name': paletteName,
+      'color1': colorOne,
+      'color2': colorTwo,
+      'color3': colorThree,
+      'color4': colorFour,
+      'color5': colorFive,
+      'project_id': projectId
+
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const response = await fetch('https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/:id/palettes', options);
+  if (!response.ok) {
+    throw Error('Error posting project');
+  }
+  return response.json();
+}
