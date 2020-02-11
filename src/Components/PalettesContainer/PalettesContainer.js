@@ -23,7 +23,8 @@ export const PalettesContainer = () => {
     <>
       <div className="palettes">
         <button className="display-palette-button" type="button" onClick={(event) => handleSubmit(event)}>Display {clickedProject.title} Palettes</button>   
-        <h1 className= "palettes-title">Palettes:</h1>
+        <h1 className="palettes-title">Palettes:</h1>
+        
       </div>  
       {palettes.map(palette => {
         return (
