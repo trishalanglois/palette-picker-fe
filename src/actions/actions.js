@@ -5,3 +5,11 @@ export const addProject = (id, title) => ({
     title
   }
 })
+
+export const clickedProject = (id, title) => ({
+  type: 'CLICKED_PROJECT',
+  project: {
+    id, 
+    title
+  }
+})

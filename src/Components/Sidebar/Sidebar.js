@@ -27,6 +27,7 @@ export const Sidebar = () => {
           <>         
           <SidebarProject
             title={project.title}
+            id={project.id}
               />
           </>
         )
