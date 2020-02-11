@@ -3,6 +3,7 @@ import './Palette.scss';
 import Color from '../Color/Color';
 
 export const Palette = () => {
+  let newColors;
   const [currentColors, setCurrentColors] = useState({
     color1: {id: 1, color: ''},
     color2: {id: 2, color: ''},
@@ -26,31 +27,25 @@ export const Palette = () => {
     generatePalette();
   }, [])
 
-
-  // const colors = ['000000', 'ffffff', '000000', 'ffffff', '000000']
-  const renderColors = () => {
-    const colorNames = Object.keys(currentColors);
-    console.log(colorNames);
-
-
+  const renderPalette = () => {
+    const colorKeys = Object.keys(currentColors);
+    return colorKeys.map(colorKey => {
+      return (
+        <>
+          <Color
+            key={currentColors[colorKey].color} 
+            color={currentColors[colorKey].color}
+          />
+        </>
+      )
+    })
   }
-
-  // const generatePalette = colors.map(color => {
-  //   return (
-  //     <>
-  //       <Color
-  //         key={color} 
-  //         color={color}
-  //       />
-  //     </>
-  //   )
-  // })
 
   return (
     <aside className="palette-wrapper">
       <button className="delete-button">X</button>
       <div className="palettes-wrapper">
-        {generatePalette}
+        {renderPalette()}
       </div>
       <h4 className="palette-name-label">Palette Name</h4>
     </aside>
@@ -59,4 +54,3 @@ export const Palette = () => {
 
 export default Palette;
 
-//mapState to GET the palettes for a given project 
