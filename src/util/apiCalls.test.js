@@ -1,4 +1,4 @@
-import { retrieveProjects, retrievePalettes, retrieveSpecificProject, retrieveSpecificPalette, postProject, postPalette, deleteProject, deletePalette, updateProjectTitle } from './apiCalls';
+import { retrieveProjects, retrievePalettes, retrieveSpecificProject, retrieveSpecificPalette, postProject, postPalette, deleteProject, deletePalette, updateProjectTitle, updatePaletteTitle } from './apiCalls';
 
 
 
@@ -507,5 +507,60 @@ describe('updateProjectTitle', () => {
         });
       });
       expect(updateProjectTitle(projectId, mockTitle)).rejects.toEqual(Error('Error updating title'))
+    })
+})
+  
+describe('updatePaletteTitle', () => {
+    let projectId = 1;
+    let paletteId = 23;
+
+
+    let mockPalette =  {
+        name: 'foster',
+        color1: 'red',
+        color2: 'blue',
+        color3: 'purple',
+        color4: 'orange',
+        color5: 'yellow',
+        project_id:2
+      }
+    let mockName ='foster palette'
+    let mockResponse ='Palette 23 has been updated'
+
+
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockResponse)
+        });
+      });
+    });
+  
+    it('should be passed the correct url', () => {
+        const expected = [`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes/${paletteId}`, {
+            method: 'PATCH',
+           body: JSON.stringify({name:mockName}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }];
+        
+      updatePaletteTitle(projectId, paletteId, mockName)
+  
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+    })
+  
+    it('should add name', () => {
+      expect(updatePaletteTitle(projectId, paletteId, mockName)).resolves.toEqual(mockResponse);
+    })
+  
+    it('should return an error for response that is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        });
+      });
+      expect(updatePaletteTitle(projectId, paletteId)).rejects.toEqual(Error('Error updating name'))
     })
   })
