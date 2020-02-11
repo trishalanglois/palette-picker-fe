@@ -1,20 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './PaletteForm.scss';
 import Color from '../Color/Color'
 import PalettesContainer from '../PalettesContainer/PalettesContainer';
+import Palette from '../Palette/Palette';
 
 export const PaletteForm = () => {
-  const colors = ['000000', 'ffffff', '000000', 'ffffff', '000000']
-  const generatePalette = colors.map(color => {
-    return (
-      <>
-        <Color
-          key={color} 
-          color={color}
-        />
-      </>
-    )
-  })
 
   return (
     <form className="add-palette-form">
@@ -26,12 +16,12 @@ export const PaletteForm = () => {
           <input className="name-palette-input" type="text"></input>
         </div>
         <div className="palettes-wrapper">
-          {generatePalette}
+          <Palette />
         </div>
-
       </div>
-
       <button className="add-palette-button" type="button">add to project</button>
+
+      //if there are palettes to go with this project, render PalettesContainer: 
       <PalettesContainer />
     </form>
   )
