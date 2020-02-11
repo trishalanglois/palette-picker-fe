@@ -3,8 +3,6 @@ import './PalettesContainer.scss';
 import Palette from '../Palette/Palette';
 import { useSelector, useDispatch } from 'react-redux';
 import { retrievePalettes } from '../../util/apiCalls';
-import { addPalettes } from '../../actions/';
-import { clickedProject } from '../../actions/actions';
 
 
 export const PalettesContainer = () => {
@@ -16,7 +14,6 @@ export const PalettesContainer = () => {
     event.preventDefault();
     try {
       const response = await retrievePalettes(clickedProject.id)
-      console.log(response)
       dispatch({type: 'ADD_PALETTES', palettes: response})
     } catch (error) {
     }
@@ -25,19 +22,25 @@ export const PalettesContainer = () => {
   return (
     <>
       <div className="palettes">
-      <button className="display-palette-button" type="button" onClick={(event) => handleSubmit(event)}>Display Palettes</button>   
-        <h1 className= "palettes-title">Palettes</h1>
+        <button className="display-palette-button" type="button" onClick={(event) => handleSubmit(event)}>Display {clickedProject.title}Palettes</button>   
+        <h1 className= "palettes-title">Palettes:</h1>
       </div>  
-      {/* {palettes.map(palette => {
+      {palettes.map(palette => {
         return (
         <>         
         <Palette
-          title={project.title}
-          id={project.id}
+          id={palette.id}
+          title={palette.name}
+          colorOne={palette.color1}
+          colorTwo={palette.color2}
+          colorThree={palette.color3}
+          colorFour={palette.color4}
+          colorFive={palette.color5}
+          projectId={palette.projectid}           
             />
         </>
       )
-    })} */}
+    })}
     </>
   )
 }
