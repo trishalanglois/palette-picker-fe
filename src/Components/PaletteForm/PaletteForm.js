@@ -39,8 +39,10 @@ export const PaletteForm = () => {
             currentColors={currentColors} />
         </div>
       </div>
-      <button className="generate-palette-button" onClick={() => generatePalette()}type="button">new palette</button>
-      <button className="add-palette-button" type="button">add to project</button>
+      <div className="palette-button-wrapper">
+        <button className="generate-palette-button" onClick={() => generatePalette()}type="button">new palette</button>
+        <button className="add-palette-button" type="button">add to project</button>
+      </div>
       {/* <PalettesContainer /> */}
     </form>
   )

@@ -4,7 +4,6 @@ import Color from '../Color/Color';
 
 export const Palette = ({ currentColors }) => {
 
-
   const renderPalette = () => {
     const colorKeys = Object.keys(currentColors);
     return colorKeys.map(colorKey => {
@@ -24,7 +23,7 @@ export const Palette = ({ currentColors }) => {
       <div className="palettes-wrapper">
         {renderPalette()}
       </div>
-      <h4 className="palette-name-label">Palette Name</h4>
+      {/* <h4 className="palette-name-label">Palette Name</h4> */}
     </aside>
   )
 }
