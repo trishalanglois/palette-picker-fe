@@ -55,16 +55,17 @@ export const postProject = async projectTitle => {
   return response.json();
 }
 
-export const postPalette = async (paletteName, colorOne, colorTwo, colorThree, colorFour,colorFive, projectId) => {
+export const postPalette = async (paletteName, colorOne, colorTwo, colorThree, colorFour, colorFive, projectId) => {
   const options = {
     method: 'POST',
     body: JSON.stringify({
       'name': paletteName,
-      'color1': colorOne,
-      'color2': colorTwo,
-      'color3': colorThree,
-      'color4': colorFour,
-      'color5': colorFive
+      'color1': colorOne.color,
+      'color2': colorTwo.color,
+      'color3': colorThree.color,
+      'color4': colorFour.color,
+      'color5': colorFive.color,
+      'project_id':projectId
     }),
     headers: {
       'Content-Type': 'application/json'
