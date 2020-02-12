@@ -1,0 +1,11 @@
+@import '../../scss/variables';
+
+.sidebar-project-name {
+  font-family: $accent-font;
+  font-weight: lighter;
+  &:hover {
+    background-color: #AAAAB1;
+    cursor: pointer;
+    font-weight: bold;
+  }
+}
