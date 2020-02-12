@@ -1,10 +1,15 @@
 @import '../../scss/variables';
 
 .projects-title {
-    color: $dark-font-color;
-  }
+  color: $dark-font-color;
+  font-family: $main-font;
+  font-size: 2em;
+  margin: 1em 1em 0em 1em;
+}
 
 .projects {
-    margin: auto;
-    border-bottom: 2px solid black;
-  }
+  margin: auto;
+  border-bottom: 2px solid black;
+}
+
+

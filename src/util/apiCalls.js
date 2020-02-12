@@ -55,7 +55,7 @@ export const postProject = async projectTitle => {
   return response.json();
 }
 
-export const postPalette = async (paletteName, colorOne, colorTwo, colorThree,colorFour,colorFive,projectId) => {
+export const postPalette = async (paletteName, colorOne, colorTwo, colorThree, colorFour,colorFive, projectId) => {
   const options = {
     method: 'POST',
     body: JSON.stringify({
@@ -73,15 +73,15 @@ export const postPalette = async (paletteName, colorOne, colorTwo, colorThree,co
 
   const response = await fetch(`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes`, options);
   if (!response.ok) {
-    throw Error('Error posting project');
+    throw Error('Error posting palette.');
   }
-  return response.json();
+  const returnValue = await response.json()
+  return returnValue.id[0]
 }
 
 export const deletePalette = async (paletteId, projectId) => {
   const options = {
     method: 'DELETE',
-
   };
 
   const response = await fetch(`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes/${paletteId}`, options);

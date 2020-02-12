@@ -18,21 +18,21 @@ export const Sidebar = () => {
   },[]);
 
     return (
-      <>
-      <div className= "projects">
-          <h1 className= "projects-title">Projects</h1>
-      </div>   
-        {projects.map(project => {
-          return (
-          <>         
-          <SidebarProject
-            title={project.title}
-            id={project.id}
-              />
+      <nav className="project-sidebar">
+        <div className="projects">
+            <h1 className= "projects-title">PROJECTS</h1>
+        </div>   
+          {projects.map(project => {
+            return (
+            <>         
+            <SidebarProject
+              title={project.title}
+              id={project.id}
+            />
           </>
-        )
-      })}
-      </>
+          )
+        })}
+      </nav>
     )
   }
 
