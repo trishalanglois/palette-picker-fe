@@ -30,14 +30,7 @@ export const PalettesContainer = () => {
         return (
         <>         
         <Palette
-          id={palette.id}
-          title={palette.name}
-          colorOne={palette.color1}
-          colorTwo={palette.color2}
-          colorThree={palette.color3}
-          colorFour={palette.color4}
-          colorFive={palette.color5}
-          projectId={palette.projectid}           
+          currentColors={palette}          
             />
         </>
       )
