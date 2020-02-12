@@ -19,9 +19,8 @@ export const ProjectForm = ({ projectTitle, id }) => {
     }
   }
   
-  useEffect(() => {
-
-  }, [title])
+  // useEffect(() => {
+  // }, [title])
   
   return (
     <div className="project-form-wrapper"> 
@@ -30,12 +29,18 @@ export const ProjectForm = ({ projectTitle, id }) => {
           chosenProject.title
         }
       {!chosenProject.title &&
-          < label className="title-input-label">PROJECT TITLE</label>
-        }
-        {!chosenProject.title &&
+        <>
+          <label className="title-input-label">PROJECT TITLE</label>
           <input className="title-input" type="text" onChange={(event) => setTitle(event.target.value)} />
+          <button className="generate-palette-button" type="button" onClick={(event) => handleSubmit(event)}>name project</button>
+        </>
         }
-        {title &&  <button className="generate-palette-button" type="button" onClick={(event) => handleSubmit(event)}>name project</button>}
+        {/* {!chosenProject.title &&
+          
+        }
+        {title &&  } */}
+        
+
 
       </form>
     </div>
