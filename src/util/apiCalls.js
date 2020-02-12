@@ -76,15 +76,12 @@ export const postPalette = async (paletteName, colorOne, colorTwo, colorThree, c
     throw Error('Error posting palette.');
   }
   const returnValue = await response.json()
-  console.log(returnValue.id[0])
   return returnValue.id[0]
-  // return response.json();
 }
 
 export const deletePalette = async (paletteId, projectId) => {
   const options = {
     method: 'DELETE',
-
   };
 
   const response = await fetch(`https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes/${paletteId}`, options);

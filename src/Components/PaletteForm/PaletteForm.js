@@ -27,7 +27,6 @@ export const PaletteForm = () => {
       color4: {id: 4, color: Math.floor(Math.random()*16777215).toString(16)},
       color5: {id: 5, color: Math.floor(Math.random()*16777215).toString(16)}
     })
-    console.log(typeof projectId.id)
   }
 
   useEffect(() => {
