@@ -49,7 +49,7 @@ export const PaletteForm = () => {
         <button className="generate-palette-button" onClick={() => generatePalette()}type="button">new palette</button>
         <button className="add-palette-button" type="button" onClick={() => postPalette(name, currentColors.color1, currentColors.color2, currentColors.color3, currentColors.color4, currentColors.color5, parsedId)}>add to project</button>
       </div>
-      {/* <PalettesContainer /> */}
+      <PalettesContainer />
     </form>
   )
 }

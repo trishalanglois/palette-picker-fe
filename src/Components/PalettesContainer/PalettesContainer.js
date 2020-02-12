@@ -1,6 +1,6 @@
 import React from 'react';
 import './PalettesContainer.scss';
-import Palette from '../Palette/Palette';
+import DisplayPalettes from '../DisplayPalettes/DisplayPalettes';
 import { useSelector, useDispatch } from 'react-redux';
 import { retrievePalettes } from '../../util/apiCalls';
 
@@ -27,11 +27,16 @@ export const PalettesContainer = () => {
         
       </div>  
       {palettes.map(palette => {
+        console.log(palette)
         return (
         <>         
-        <Palette
-          currentColors={palette}          
-            />
+            <DisplayPalettes
+              color1={palette.color1}
+              color2 ={palette.color2}
+              color3 ={palette.color3}
+              color4 ={palette.color4}
+              color5 ={palette.color5}
+              />
         </>
       )
     })}
