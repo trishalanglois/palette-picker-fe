@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './PaletteForm.scss';
 import Color from '../Color/Color'
 import PalettesContainer from '../PalettesContainer/PalettesContainer';
 import Palette from '../Palette/Palette';
+import { postPalette } from '../../util/apiCalls';
 
 export const PaletteForm = () => {
+  const projectId = useSelector(state => state.clickedProject);
   const [currentColors, setCurrentColors] = useState({
     color1: {id: 1, color: ''},
     color2: {id: 2, color: ''},
@@ -21,6 +24,12 @@ export const PaletteForm = () => {
       color4: {id: 4, color: Math.floor(Math.random()*16777215).toString(16)},
       color5: {id: 5, color: Math.floor(Math.random()*16777215).toString(16)}
     })
+  }
+
+  const postPalette = () => {
+    console.log(projectId);
+    //get project id from state (clickedProject.id)
+    //postPalette(paletteName, colorOne, colorTwo, colorThree, colorFour,colorFive, projectId)
   }
 
   useEffect(() => {
@@ -41,7 +50,7 @@ export const PaletteForm = () => {
       </div>
       <div className="palette-button-wrapper">
         <button className="generate-palette-button" onClick={() => generatePalette()}type="button">new palette</button>
-        <button className="add-palette-button" type="button">add to project</button>
+        <button className="add-palette-button" type="button" onClick={() => postPalette()}>add to project</button>
       </div>
       {/* <PalettesContainer /> */}
     </form>

@@ -55,7 +55,7 @@ export const postProject = async projectTitle => {
   return response.json();
 }
 
-export const postPalette = async (paletteName, colorOne, colorTwo, colorThree,colorFour,colorFive,projectId) => {
+export const postPalette = async (paletteName, colorOne, colorTwo, colorThree, colorFour,colorFive, projectId) => {
   const options = {
     method: 'POST',
     body: JSON.stringify({
