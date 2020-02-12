@@ -58,3 +58,20 @@ describe('actions', () => {
         expect(result).toEqual(expectedAction);
     });
 })
+
+describe('actions', () => {
+    it('should have a type of ADD_PALETTES', () => {
+        // Setup
+        const palette = [{ name: 'fosters projects', color1: '000000', color2:'22222', color3:'232232', color4:'222222', color5:'333333' }];
+        const expectedAction = {
+            type: 'ADD_PALETTES',
+            palettes: [{ name: 'fosters projects', color1: '000000', color2:'22222', color3:'232232', color4:'222222', color5:'333333' }]
+        };
+
+        // Execution
+        const result = actions.addPalettes(palette);
+
+        // Expectation
+        expect(result).toEqual(expectedAction);
+    });
+})
