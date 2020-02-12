@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import './DisplayPalettes.scss';
+
 import Color from '../Color/Color';
 
-export const DisplayPalettes = ({ color1,color2,color3,color4,color5 }) => {
+export const DisplayPalettes = ({ color1,color2,color3,color4,color5,name }) => {
 
   return (
     <aside className="palette-wrapper">
-      <div className="palettes-wrapper">
+          <div className="palettes-wrapper">
+              <h4 className="palette-title">{name}</h4>
         <Color
             key={color1} 
             color={color1}

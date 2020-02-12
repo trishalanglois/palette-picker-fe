@@ -22,12 +22,9 @@ export const PalettesContainer = () => {
   return (
     <>
       <div className="palettes">
-        <button className="display-palette-button" type="button" onClick={(event) => handleSubmit(event)}>Display {clickedProject.title} Palettes</button>   
-        <h1 className="palettes-title">Palettes:</h1>
-        
+        <button className="display-palette-button" type="button" onClick={(event) => handleSubmit(event)}>Display {clickedProject.title} Palettes</button>           
       </div>  
       {palettes.map(palette => {
-        console.log(palette)
         return (
         <>         
             <DisplayPalettes
@@ -35,7 +32,8 @@ export const PalettesContainer = () => {
               color2 ={palette.color2}
               color3 ={palette.color3}
               color4 ={palette.color4}
-              color5 ={palette.color5}
+              color5={palette.color5}
+              name={palette.name}
               />
         </>
       )
