@@ -16,3 +16,24 @@ describe('actions', () => {
         expect(result).toEqual(expectedAction);
     });
 })
+
+describe('actions', () => {
+    it('should have a type of ADD_PROJECT', () => {
+        // Setup
+        const title = "foster";
+        const id = 1;
+        const expectedAction = {
+            type: 'ADD_PROJECT',
+            project: {
+              id:1, 
+              title:'foster'
+            }
+        };
+
+        // Execution
+        const result = actions.addProject(id, title);
+
+        // Expectation
+        expect(result).toEqual(expectedAction);
+    });
+})
