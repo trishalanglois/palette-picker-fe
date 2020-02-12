@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './PaletteForm.scss';
 import Color from '../Color/Color'
 import PalettesContainer from '../PalettesContainer/PalettesContainer';
 import Palette from '../Palette/Palette';
-import { postPalette } from '../../util/apiCalls';
+import { postPalette, retrievePalettes } from '../../util/apiCalls';
+
 
 export const PaletteForm = () => {
   const projectId = useSelector(state => state.clickedProject);
+  const dispatch = useDispatch()
   const parsedId = parseInt(projectId.id);
   const [name, setName] = useState("");
 
@@ -33,6 +35,12 @@ export const PaletteForm = () => {
     generatePalette();
   }, [])
 
+  const handleClick = async() => {
+    await postPalette(name, currentColors.color1, currentColors.color2, currentColors.color3, currentColors.color4, currentColors.color5, parsedId)
+    const response = await retrievePalettes(parsedId)
+    dispatch({type: 'ADD_PALETTES', palettes: response})
+  }
+
   return (
     <form className="add-palette-form">
       <div className="add-palette-form-top">
@@ -47,7 +55,7 @@ export const PaletteForm = () => {
       </div>
       <div className="palette-button-wrapper">
         <button className="generate-palette-button" onClick={() => generatePalette()}type="button">new palette</button>
-        <button className="add-palette-button" type="button" onClick={() => postPalette(name, currentColors.color1, currentColors.color2, currentColors.color3, currentColors.color4, currentColors.color5, parsedId)}>add to project</button>
+        <button className="add-palette-button" type="button" onClick={() => handleClick()}>add to project</button>
       </div>
       <PalettesContainer />
     </form>
