@@ -1,0 +1,12 @@
+@import '../../scss/variables';
+
+.palette-title{
+    font-family: $main-font;
+    margin-right: 4em;
+}
+
+.small-palette-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2vh 15vw 0vh 0vw;
+}

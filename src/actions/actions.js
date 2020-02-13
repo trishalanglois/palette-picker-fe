@@ -13,3 +13,9 @@ export const clickedProject = (id, title) => ({
     title
   }
 })
+
+export const addPalettes = (palettes) => ({
+  type: 'ADD_PALETTES',
+  palettes
+})
+

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './SidebarProject.scss';
 import ProjectForm from '../ProjectForm/ProjectForm';
-import { clickedProject } from '../../actions/actions';
+import { clickedProject, addPalettes } from '../../actions/actions';
 
 
 export const SidebarProject = ({ title, id }) => {
@@ -14,6 +14,7 @@ export const SidebarProject = ({ title, id }) => {
     setClickedId(id);
     setClickedTitle(name);
     dispatch(clickedProject(id, name));
+    dispatch(addPalettes([]))
   }
 
 
