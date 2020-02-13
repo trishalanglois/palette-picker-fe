@@ -333,27 +333,6 @@ describe('postPalette', () => {
       });
     });
   
-    it('should be passed the correct url', () => {
-       const expected = [ `https://mysterious-dusk-17585.herokuapp.com/api/v1/projects/${projectId}/palettes`,{
-        method: 'POST',
-           body: JSON.stringify({
-            'name': paletteName,
-            'color1': color1,
-            'color2': color2,
-            'color3': color3,
-            'color4': color4,
-            'color5': color5
-          }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }];
-        
-      postPalette(paletteName, color1, color2, color3, color4, color5, projectId)
-  
-      expect(window.fetch).toHaveBeenCalledWith(...expected);
-    })
-  
     it('should return a new palette with correct project', () => {
       expect(postPalette(paletteName, color1, color2, color3, color4, color5, projectId)).resolves.toEqual(mockResponse);
     })
